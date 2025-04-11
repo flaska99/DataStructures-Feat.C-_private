@@ -101,10 +101,10 @@ int insertSortedLL(LinkedList *ll, int item)
 			return n;
 		} else {
 			return -1;
- 		}
+		}
 	}
 
- 	insertNode(ll, n, item);
+	insertNode(ll, n, item);
 	return n;
 }
 
