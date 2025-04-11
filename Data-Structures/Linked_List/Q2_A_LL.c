@@ -103,7 +103,16 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-    /* add your code here */
+	int n = 0;
+    ListNode *cur = ll1->head; //처음 cur은 ll1 노드가 비엇는지 확인
+
+    while (cur != NULL && ll2->head != NULL) { //함수 안에서 부턴 교차 범위에 노드가 비었는지 확인
+        ListNode *temp = ll2->head;          // ll2의 첫 번째 노드
+        insertNode(ll1, n + 1, temp->item);  // ll1에 삽입 (교차 위치)
+        removeNode(ll2, 0);                  // ll2의 첫 노드 삭제
+        cur = findNode(ll1, n + 2);          // 다음 교차 지점으로 이동
+        n += 2;                              // 삽입된 노드 포함하여 인덱스 증가
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
