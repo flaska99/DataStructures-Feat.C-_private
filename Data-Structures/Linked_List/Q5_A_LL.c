@@ -38,7 +38,8 @@ int removeNode(LinkedList *ll, int index);
 
 int main()
 {
-	int c, i;
+	int c = -1;
+	int i;
 	LinkedList ll;
 	LinkedList resultFrontList, resultBackList;
 
@@ -60,7 +61,7 @@ int main()
 
 	while (c != 0)
 	{
-	    printf("Please input your choice(1/2/0): ");
+	    printf("Please input your choice(1/2/3/0): ");
 		scanf("%d", &c);
 
 		switch (c)
@@ -73,6 +74,10 @@ int main()
 			printList(&ll);
 			break;
 		case 2:
+			printf("The resulting linked list is: ");
+			printList(&ll);
+			break;
+		case 3:
 			printf("The resulting linked lists after splitting the given linked list are:\n");
 			frontBackSplitLinkedList(&ll, &resultFrontList, &resultBackList); // You need to code this function
 			printf("Front linked list: ");
@@ -102,7 +107,26 @@ int main()
 
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
-	/* add your code here */
+	if(ll->head == NULL || ll == NULL) return;
+
+	int length = ll->size;
+	int target = (length / 2) + (length % 2);
+	int temp;
+	int backcount = 0;
+
+	for (int i=0; i < length; i++){
+		temp = ll->head->item;
+
+		if (i >= target){
+			removeNode(ll, 0);
+			insertNode(resultBackList, backcount, temp);
+			backcount++;
+			continue;
+		}
+
+		removeNode(ll, 0);
+		insertNode(resultFrontList, i, temp);	
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
