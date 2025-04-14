@@ -116,7 +116,28 @@ int main()
 int identical(BTNode *tree1, BTNode *tree2)
 
 {
-   /* add your code here */
+    if (tree1->item != tree2->item) return 0; //루트확인
+
+    BTNode *cur_1l = tree1->left;
+    BTNode *cur_2l = tree2->left;
+
+    BTNode *cur_1r = tree1->right;
+    BTNode *cur_2r = tree2->right;
+
+    while((cur_1l != NULL && cur_1r != NULL) &&
+            (cur_1r != NULL && cur_2r != NULL)){
+
+        if(cur_1l->item != cur_2l->item) return 0;
+        if(cur_1r->item != cur_2r->item) return 0;
+
+        cur_1l = cur_1l->left;
+        cur_2l = cur_2l->left;
+        cur_1r = cur_1r->right;
+        cur_2r = cur_2r->right;
+   }
+
+   return 1;
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////

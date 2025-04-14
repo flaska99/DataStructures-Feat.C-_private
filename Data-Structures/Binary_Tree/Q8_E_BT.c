@@ -102,7 +102,18 @@ int main()
 
 int hasGreatGrandchild(BTNode *node)
 {
-	/* add your code here */
+    if (node == NULL) return 0;  // empty subtree의 height는 -1로 설정
+
+    int left_depth = hasGreatGrandchild(node->left);
+    int right_depth = hasGreatGrandchild(node->right);
+
+    int current_depth = (left_depth > right_depth ? left_depth : right_depth) + 1;
+
+    // great-grandchild가 존재하는지 확인
+    if (left_depth >= 3 || right_depth >= 3)
+        printf("%d \n", node->item);  // 조건 만족시 출력
+
+    return current_depth;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
