@@ -125,7 +125,7 @@ int identical(BTNode *tree1, BTNode *tree2)
     BTNode *cur_2r = tree2->right;
 
     while((cur_1l != NULL && cur_1r != NULL) &&
-            (cur_1r != NULL && cur_2r != NULL)){
+            (cur_1l != NULL && cur_2r != NULL)){
 
         if(cur_1l->item != cur_2l->item) return 0;
         if(cur_1r->item != cur_2r->item) return 0;

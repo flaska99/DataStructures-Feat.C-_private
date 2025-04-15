@@ -91,7 +91,31 @@ int main()
 
 void postOrderIterativeS1(BSTNode *root)
 {
-	 /* add your code here */
+	//스택생성
+	Stack s;
+	s.top = NULL;
+	///////////////////////////////////////////////////////////
+
+	//포인터 초기화
+	BSTNode *curr = root;
+	BSTNode *last = NULL;
+	///////////////////////////////////////////////////////////
+	
+	while(curr || !isEmpty(&s)){
+		if(curr) {
+			push(&s, curr);
+			curr = curr->left;
+		} else{
+			BSTNode *top = peek(&s);
+
+			if(top->right && last != top->right)
+				curr = top->right;
+			else{
+				printf("%d ", top->item);
+				last = pop(&s);
+			}
+		}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
