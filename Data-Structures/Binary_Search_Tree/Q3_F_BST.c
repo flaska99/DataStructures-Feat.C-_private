@@ -101,10 +101,10 @@ void preOrderIterative(BSTNode *root)
 		
 		if(cur->right != NULL)
 			push(&s, cur->right);
-		else if(cur->left != NULL)
+		if(cur->left != NULL)
 			push(&s, cur->left);
 		
-		print("%d ", cur->item);
+		printf("%d ", cur->item);
 	}
 }
 
